@@ -1,0 +1,65 @@
+<!doctype html>
+<html ng-app = "app">
+<head>
+  <meta charset="UTF-8">
+  <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src = "https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+  <script src = "index.js"></script> <!-- это файл скриптов, который делаем для приложения -->
+</head>
+
+<body>
+
+<div class = "container" ng-controller = "indexController">
+
+  <h3>Список студентов</h3>
+  <table class = "table table-hover " cellpadding = "0" cellspacing="0">
+    <tr>
+      <td>id</td>
+      <td>Имя</td>
+      <td>Фамилия</td>
+      <td>Отметка</td>
+      <td>Отчислить</td>
+    </tr>
+    <tbody>
+    <tr ng-repeat = "p in StudentList">
+      <td>{{p.id}}</td>
+      <td>{{p.firstname}}</td>
+      <td>{{p.lastname}}</td>
+      <td>{{p.mark}}</td>
+      <td>
+        <button class = "btn btn-danger" ng-click = "deleteStudent(p.id)">Отчислить</button>
+      </td>
+
+
+    </tr>
+    </tbody>
+  </table>
+
+  <h3>Зачислить студента</h3>
+  <form>
+    <div class="form-group col-md-6">
+      <label >Имя</label>
+      <input class="form-control" type="text" ng-model="studentDto.firstname">
+    </div>
+    <div class="form-group col-md-6">
+      <label >Фамилия</label>
+      <input class="form-control" type="text" ng-model="studentDto.lastName">
+    </div>
+    <div class="form-group col-md-6">
+      <label>Оценка</label>
+      <input class="form-control" type="number" ng-model="studentDto.mark">
+    </div>
+
+    <div>
+      <button class="btn btn-primary" ng-click="addNewStudent(studentDto)">Зачислить</button>
+    </div>
+  </form>
+
+
+</div>
+
+</body>
+
+</html>
